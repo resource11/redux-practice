@@ -34,7 +34,6 @@ const getVisiblePhotos = (state) => {
       return state.currentUser.favorites.map(photo => photo.isFavorite = true);
     case 0:
     default:
-      console.log(state);
       return state.currentUser && state.currentUser.favorites ?
         state.feed.map(photo => photo.isFavorite ===
           state.currentUser.favorites.includes(photo)) : state.feed;
