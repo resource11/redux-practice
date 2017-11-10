@@ -4,15 +4,14 @@ import Link from '../components/Link';
 
 const getLinkContent = filter => {
   switch(filter) {
-    case 1:
-      return 'My Photos';
-    case 2:
+    case -1:
       return 'Favorites';
-    case 0:
+    case -2:
+      return 'All';
     default:
-      return 'Feed';
+      return state.breeds[filter].name;
   }
-}
+};
 
 const mapStateToProps = (state, ownProps) => {
   return {

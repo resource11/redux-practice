@@ -18,6 +18,16 @@ export const fetchFeed = (dispatch, userId) => {
     .then(photos => dispatch(fetchFeedSuccess(photos)));
 };
 
+export const fetchBreedList = (dispatch, userId) => {
+  fetch(`https://dog.ceo/api/breeds/list/all`)
+    .then(response => response.json())
+    .then(json =>
+      Object.keys(json.message).map(name => {
+        name, id: json.message.indexOf(name), subBreeds: json.message[name]
+      }))
+    .then(breeds => dispatch(fetchBreedsSuccess(breeds)));
+};
+
 const fetchFeedSuccess = (photos) => ({
   type: 'FETCH_FEED_SUCCESS',
   photos

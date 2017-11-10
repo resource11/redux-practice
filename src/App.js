@@ -7,12 +7,11 @@ import VisibleFeed from './containers/VisibleFeed';
 
 class App extends Component {
   render() {
-    const userId = 1;
     return (
       <div className="App">
         <Header logo={logo} />
         <VisibilityFilter />
-        <VisibleFeed userId={userId} />
+        <VisibleBreeds />
       </div>
     );
   }
