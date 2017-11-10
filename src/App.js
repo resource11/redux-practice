@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import VisibilityFilter from './components/VisibilityFilter';
-import VisibleFeed from './containers/VisibleFeed';
+import VisibleBreeds from './containers/VisibleBreeds';
 
 class App extends Component {
   render() {

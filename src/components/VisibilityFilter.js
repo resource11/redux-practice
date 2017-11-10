@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import FilterLink from '../containers/FilterLink';
 
 
@@ -19,4 +21,8 @@ const mapStateToProps = (state) => ({
   breeds: state.breeds
 });
 
-export default Filter;
+const VisibilityFilter = connect(
+  mapStateToProps
+)(Filter);
+
+export default VisibilityFilter;

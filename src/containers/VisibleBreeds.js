@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Photo from '../components/Photo';
-import { fetchFeed, favoritePhoto, unfavoritePhoto } from '../actions';
+import { fetchBreeds, favoritePhoto, unfavoritePhoto } from '../actions';
 
 class Breeds extends Component {
   componentWillMount(props) {
@@ -14,7 +14,9 @@ class Breeds extends Component {
       <div className="visible-feed">
         { photos.map((photo, index) => (<Photo
             key={index}
-            url={url}
+            url={photo.url}
+            isFavorite={photo.isFavorite}
+            index={index}
             toggleFavorite={onToggleFavoritePhoto}
             />
           )
@@ -25,13 +27,14 @@ class Breeds extends Component {
 }
 
 const getVisiblePhotos = (state) => {
+  console.log(state);
   switch(state.filter) {
     case -1:
       return state.currentUser.favorites.map(photo => photo.isFavorite = true);
     case -2:
       return state.allPhotos;
     default:
-      return state.photos;
+      return state.feed;
   }
 };
 
@@ -43,7 +46,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchFeed: () => fetchFeed(dispatch, ownProps.userId),
+    fetchBreeds: () => fetchBreeds(dispatch),
     onToggleFavoritePhoto: (photo) => {
       // Remove isFavorite property because it is view-only
       const originalPhoto = { ...photo, isFavorite: undefined };
@@ -59,6 +62,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const VisibleBreeds = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Feed);
+)(Breeds);
 
 export default VisibleBreeds;

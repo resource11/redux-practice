@@ -56,7 +56,7 @@ const visibilityFilter = (state = 0, action) => {
   }
 };
 
-const breeds = (state = { breeds: [] }, action) => {
+const breeds = (state = [], action) => {
   switch(action.type) {
     case 'FETCH_BREEDS_SUCCESS':
       return action.breeds;
@@ -66,11 +66,11 @@ const breeds = (state = { breeds: [] }, action) => {
 };
 
 const rootReducer = combineReducers({
+  breeds,
   feed,
   allPhotos,
   currentUser,
-  visibilityFilter,
-  breeds
+  visibilityFilter
 });
 
 export default rootReducer;

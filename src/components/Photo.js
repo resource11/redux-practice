@@ -1,15 +1,15 @@
 import React from 'react';
 
-const Photo = ({url, toggleFavorite}) => (
+const Photo = ({url, index, isFavorite, toggleFavorite}) => (
   <div className="photo-container">
     <img className="photo" src={url} />
     <button
-      className={photo.isFavorite ? 'favorite chosen' : 'favorite'}
+      className={isFavorite ? 'favorite chosen' : 'favorite'}
       onClick={e => {
         e.preventDefault();
-        toggleFavorite(photo)
+        toggleFavorite(index)
       }}>
-      { photo.isFavorite ? 'Favorited' : 'Favorite' }
+      { isFavorite ? 'Favorited' : 'Favorite' }
     </button>
   </div>
 );
