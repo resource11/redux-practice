@@ -12,8 +12,8 @@ export const signIn = (userId, name) => {
   }
 };
 
-export const fetchFeed = (dispatch, userId) => {
-  fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${userId}`)
+export const fetchFeed = (dispatch, id) => {
+  fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${id}`)
     .then(response => response.json())
     .then(photos => dispatch(fetchFeedSuccess(photos)));
 };
@@ -23,13 +23,30 @@ export const fetchBreedList = (dispatch, userId) => {
     .then(response => response.json())
     .then(json =>
       Object.keys(json.message).map(name => {
-        name, id: json.message.indexOf(name), subBreeds: json.message[name]
+        (name, id): json.message.indexOf(name), subBreeds: json.message[name]
       }))
-    .then(breeds => dispatch(fetchBreedsSuccess(breeds)));
+    .then(breeds => {
+      dispatch(fetchBreedsSuccess(breeds));
+      if (breeds.length) {
+        dispatch(setVisibilityFilter(0));
+        fetchBreedImages(dispatch, breeds[0]);
+      }
+    }));
 };
+
+export const fetchBreedImages = (dispatch, breed) => {
+  fetch(`https://dog.ceo/api/breed/${breed.name}/images`)
+    .then(response => response.json().message)
+    .then(images => dispatch(fetchBreedImagesSuccess(images)));
+}
 
 const fetchFeedSuccess = (photos) => ({
   type: 'FETCH_FEED_SUCCESS',
+  photos
+});
+
+const fetchBreedImagesSuccess = (photos) => ({
+  type: 'FETCH_BREED_IMAGES_SUCCESS',
   photos
 });
 

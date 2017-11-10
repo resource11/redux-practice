@@ -12,9 +12,9 @@ class Breeds extends Component {
     const { photos, onToggleFavoritePhoto } = this.props;
     return (
       <div className="visible-feed">
-        { photos.map(photo => (<Photo
-            key={photo.id}
-            photo={photo}
+        { photos.map((photo, index) => (<Photo
+            key={index}
+            url={url}
             toggleFavorite={onToggleFavoritePhoto}
             />
           )
@@ -28,6 +28,8 @@ const getVisiblePhotos = (state) => {
   switch(state.filter) {
     case -1:
       return state.currentUser.favorites.map(photo => photo.isFavorite = true);
+    case -2:
+      return state.allPhotos;
     default:
       return state.photos;
   }

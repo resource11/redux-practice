@@ -2,12 +2,21 @@ import { combineReducers } from 'redux';
 
 const feed = (state = [], action) => {
   switch(action.type) {
-    case 'FETCH_FEED_SUCCESS':
+    case 'FETCH_BREED_IMAGES_SUCCESS':
       return action.photos;
     default:
       return state;
   }
 };
+
+const allPhotos = (state = [], action) => {
+  switch(action.type) {
+    case 'FETCH_ALL_IMAGES_SUCESS':
+      return action.photos;
+    default:
+      return state;
+  }
+}
 
 const currentUser = (state = {
   photos: [],
@@ -47,10 +56,21 @@ const visibilityFilter = (state = 0, action) => {
   }
 };
 
+const breeds = (state = { breeds: [] }, action) => {
+  switch(action.type) {
+    case 'FETCH_BREEDS_SUCCESS':
+      return action.breeds;
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   feed,
+  allPhotos,
   currentUser,
-  visibilityFilter
+  visibilityFilter,
+  breeds
 });
 
 export default rootReducer;

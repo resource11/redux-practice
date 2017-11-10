@@ -1,9 +1,8 @@
 import React from 'react';
 
-const Photo = ({photo, toggleFavorite}) => (
+const Photo = ({url, toggleFavorite}) => (
   <div className="photo-container">
-    <h3>{photo.title}</h3>
-    <img className="photo" src={photo.url} alt={photo.title} />
+    <img className="photo" src={url} />
     <button
       className={photo.isFavorite ? 'favorite chosen' : 'favorite'}
       onClick={e => {

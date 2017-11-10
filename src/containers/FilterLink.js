@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { setVisibilityFilter } from '../actions';
+import { setVisibilityFilter, fetchBreedImages } from '../actions';
 import Link from '../components/Link';
 
 const getLinkContent = filter => {
@@ -24,8 +24,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
       dispatch(setVisibilityFilter(ownProps.filter));
+      fetchBreedImages(dispatch, ownProps.filter);
     }
-  }
+  };
 };
 
 const FilterLink = connect(
