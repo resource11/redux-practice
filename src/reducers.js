@@ -9,7 +9,12 @@ const feed = (state = [], action) => {
   }
 };
 
-const currentUser = (state = {}, action) => {
+const currentUser = (state = {
+  photos: [],
+  favorites: [],
+  name: '',
+  userId: 0,
+}, action) => {
   switch(action.type) {
     case 'SIGN_IN':
       return {

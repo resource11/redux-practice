@@ -38,8 +38,25 @@
   text-decoration: none;
 }
 
-.photo-container img.photo {
-  height: 300px;
+.photo-container {
+  height: 350px;
   width: 300px;
+  display: inline-block;
+}
+
+.photo-container img.photo {
   border: 5px grey solid;
+  height: 300px;
+}
+
+.photo-container button {
+  width: 100%;
+}
+
+button.favorite {
+  background-color: #FED7D7;
+}
+
+button.favorite.chosen {
+  background-color: #FE4545;
 }

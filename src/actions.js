@@ -28,9 +28,9 @@ export const favoritePhoto = (photo) => ({
   photo
 });
 
-export const unfavoritePhoto = (index) => ({
+export const unfavoritePhoto = (photo) => ({
   type: 'UNFAVORITE_PHOTO',
-  index
+  photo
 });
 
 export const uploadPhoto = (photo) => ({
