@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 const feed = (state = [], action) => {
   switch(action.type) {
-    case 'PHOTOS_LOADED':
+    case 'FETCH_FEED_SUCCESS':
       return action.photos;
     default:
       return state;

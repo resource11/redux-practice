@@ -9,10 +9,17 @@ class Feed extends Component {
     this.props.fetchFeed();
   }
   render() {
-    const { photos } = this.props;
+    const { photos, onFavoritePhoto } = this.props;
     return (
-      <div class="visible-feed">
-        { photos.map(photo => (<Photo photo={photo} />)) }
+      <div className="visible-feed">
+        { photos.map(photo =>
+          (<Photo
+            key={photo.id}
+            photo={photo}
+            toggleFavorite={onFavoritePhoto}
+            />
+          )
+        ) }
       </div>
     );
   }
@@ -27,7 +34,10 @@ const getVisiblePhotos = (state) => {
       return state.currentUser.favorites.map(photo => photo.isFavorite = true);
     case 0:
     default:
-      return state.feed.map(photo => photo.isFavorite = state.favorites.includes(photo));
+      console.log(state);
+      return state.currentUser && state.currentUser.favorites ?
+        state.feed.map(photo => photo.isFavorite ===
+          state.currentUser.favorites.includes(photo)) : state.feed;
   }
 };
 
@@ -37,14 +47,10 @@ const mapStateToProps = state => {
   }
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchFeed: () => {
-      fetchFeed(dispatch);
-    },
-    onFavoritePhoto: photo => {
-      dispatch(favoritePhoto(photo));
-    }
+    fetchFeed: () => fetchFeed(dispatch, ownProps.userId),
+    onFavoritePhoto: photo => dispatch(favoritePhoto(photo))
   }
 };
 
