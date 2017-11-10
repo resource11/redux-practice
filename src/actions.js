@@ -35,8 +35,8 @@ export const fetchBreeds = (dispatch, userId) => {
 
 export const fetchBreedImages = (dispatch, breed) => {
   fetch(`https://dog.ceo/api/breed/${breed.name}/images`)
-    .then(response => response.json().message)
-    .then(images => dispatch(fetchBreedImagesSuccess(images)));
+    .then(response => response.json())
+    .then(json => dispatch(fetchBreedImagesSuccess(json.message)));
 }
 
 const fetchBreedsSuccess = (breeds) => ({
@@ -44,9 +44,9 @@ const fetchBreedsSuccess = (breeds) => ({
   breeds
 });
 
-const fetchBreedImagesSuccess = (photos) => ({
+const fetchBreedImagesSuccess = (images) => ({
   type: 'FETCH_BREED_IMAGES_SUCCESS',
-  photos
+  images
 });
 
 export const favoritePhoto = (photo) => ({

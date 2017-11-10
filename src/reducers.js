@@ -3,7 +3,8 @@ import { combineReducers } from 'redux';
 const feed = (state = [], action) => {
   switch(action.type) {
     case 'FETCH_BREED_IMAGES_SUCCESS':
-      return action.photos;
+      console.log(action.images);
+      return action.images;
     default:
       return state;
   }

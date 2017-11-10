@@ -30,11 +30,14 @@ const getVisiblePhotos = (state) => {
   console.log(state);
   switch(state.filter) {
     case -1:
-      return state.currentUser.favorites.map(photo => photo.isFavorite = true);
+      return state.currentUser.favorites;
     case -2:
       return state.allPhotos;
     default:
-      return state.feed;
+      return state.feed.map(url => ({
+        url,
+        isFavorite: false
+      }));
   }
 };
 
