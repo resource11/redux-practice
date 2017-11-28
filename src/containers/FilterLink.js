@@ -3,30 +3,15 @@ import { setVisibilityFilter, fetchBreedImages } from '../actions';
 import Link from '../components/Link';
 
 const getLinkContent = (filter, breeds) => {
-  switch(filter) {
-    case -1:
-      return 'Favorites';
-    case -2:
-      return 'All';
-    default:
-      return breeds[filter].name;
-  }
+  // TODO
 };
 
 const mapStateToProps = (state, ownProps) => {
-  return {
-    active: ownProps.filter === state.visibilityFilter,
-    children: getLinkContent(ownProps.filter, state.breeds)
-  };
+  // TODO
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    onClick: () => {
-      dispatch(setVisibilityFilter(ownProps.filter));
-      fetchBreedImages(dispatch, ownProps.filter);
-    }
-  };
+  // TODO
 };
 
 const FilterLink = connect(

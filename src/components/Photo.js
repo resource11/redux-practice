@@ -7,7 +7,7 @@ const Photo = ({url, index, isFavorite, toggleFavorite}) => (
       className={isFavorite ? 'favorite chosen' : 'favorite'}
       onClick={e => {
         e.preventDefault();
-        toggleFavorite(index)
+        TODO
       }}>
       { isFavorite ? 'Favorited' : 'Favorite' }
     </button>

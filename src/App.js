@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import VisibilityFilter from './components/VisibilityFilter';
-import VisibleBreeds from './containers/VisibleBreeds';
+import VisiblePhotos from './containers/VisiblePhotos';
 
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
       <div className="App">
         <Header logo={logo} />
         <VisibilityFilter />
-        <VisibleBreeds />
+        <VisiblePhotos />
       </div>
     );
   }
