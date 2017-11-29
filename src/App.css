@@ -54,7 +54,11 @@
 }
 
 button.favorite {
-  background-color: #FED7D7;
+  background-color: #ff4c4c;
+  height: 30px;
+  font-size:1.2em;
+  text-align:center;
+  margin: 0 auto;
 }
 
 button.favorite.chosen {
